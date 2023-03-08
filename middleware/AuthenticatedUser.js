@@ -3,10 +3,10 @@ require('dotenv').config();
 const {sign, verify} = require('jsonwebtoken');
 
 // Token
-function createToken(user) {
+function createToken(student) {
     return sign({
-        emailAdd: user.emailAdd,
-        userPass: user.userPass
+        emailAdd: student.emailAdd,
+        userPass: student.userPass
     },
     process.env.SECRET_KEY,
     {
@@ -16,7 +16,7 @@ function createToken(user) {
 
 function verifyToken(req, res, next) {
     try{
-        const token = req.cookies ["RegisteredUser"] !==null ? req.cookies["RegisteredUser"] :
+        const token = req.cookies ["registeredUser"] !==null ? req.cookies["registeredUser"] :
         "Please sign up" ;
         const isValid = null;
         if(token !== "Please sign up"){
