@@ -181,12 +181,11 @@ class Student {
                 INSERT INTO Books
                 SET ?;
                 `;
-                db.query(strQry,[req.body],
-                    (err)=> {
+                db.query(strQry,[req.body],(err,results)=> {
                         if(err){
-                            res.status(400).json({err: "Unable to insert a new book."});
+                            res.status(400).json({err: "Unable to insert a new book.",results});
                         }else {
-                            res.status(200).json({msg: "Book saved"});
+                            res.status(300).json({msg: "Book saved"});
                         }
                     }
                 );   
